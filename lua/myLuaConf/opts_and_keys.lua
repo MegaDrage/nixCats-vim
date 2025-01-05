@@ -2,7 +2,7 @@
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 
-if os.getenv 'WAYLAND_DISPLAY' and vim.fn.exepath 'wl-copy' ~= '' then
+if os.getenv ('WAYLAND_DISPLAY') and vim.fn.exepath ('wl-copy') ~= '' then
   vim.g.clipboard = {
     name = 'wl-clipboard',
     copy = {
@@ -31,7 +31,7 @@ vim.opt.hlsearch = true
 vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
 
 -- Preview substitutions live, as you type!
-vim.opt.inccommand = 'split'
+vim.opt.inccommand = ('split')
 
 -- Minimal number of screen lines to keep above and below the cursor.
 vim.opt.scrolloff = 10
@@ -40,11 +40,11 @@ vim.opt.scrolloff = 10
 vim.wo.number = true
 
 -- Enable mouse mode
-vim.o.mouse = 'a'
+vim.o.mouse = ('a')
 
 -- Indent
 vim.o.smarttab = true
-vim.opt.cpoptions:append 'I'
+vim.opt.cpoptions:append ('I')
 -- vim.o.expandtab = true
 vim.o.smartindent = true
 -- vim.o.autoindent = true
@@ -63,7 +63,7 @@ vim.o.ignorecase = true
 vim.o.smartcase = true
 
 -- Keep signcolumn on by default
-vim.wo.signcolumn = 'yes'
+vim.wo.signcolumn = ('yes')
 vim.wo.relativenumber = true
 
 -- Decrease update time
@@ -71,7 +71,7 @@ vim.o.updatetime = 250
 vim.o.timeoutlen = 300
 
 -- Set completeopt to have a better completion experience
-vim.o.completeopt = 'menu,preview,noselect'
+vim.o.completeopt = ('menu,preview,noselect')
 
 -- NOTE: You should make sure your terminal supports this
 vim.o.termguicolors = true
@@ -91,7 +91,7 @@ local highlight_group = vim.api.nvim_create_augroup('YankHighlight', { clear = t
 vim.api.nvim_create_autocmd('TextYankPost', {
   desc = 'addd highligh on yank',
   callback = function()
-    vim.highlight.on_yank { timeout = 600 }
+    vim.highlight.on_yank { timeout = 300 }
   end,
   group = highlight_group,
   pattern = '*',
