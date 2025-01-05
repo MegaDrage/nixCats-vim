@@ -22,7 +22,7 @@ if nixCats('general.extra') then
       "icon",
       "permissions",
       "size",
-      -- "mtime",
+      "mtime",
     },
     keymaps = {
       ["g?"] = "actions.show_help",
@@ -100,20 +100,30 @@ require('lze').load {
     after = function(plugin)
       require('Comment').setup()
     end,
+    desc = "Smart and powerful comment plugin",
   },
   {
     "indent-blankline.nvim",
     for_cat = 'general.extra',
     event = "DeferredUIEnter",
     after = function(plugin)
-      require("ibl").setup()
+      require("ibl").setup({
+      indent = {
+        char = "│", -- Символ для отображения отступов
+        tab_char = "│", -- Символ для отображения табуляции
+      },
+      scope = {
+        show_start = false, -- Не показывать начало области
+        show_end = false, -- Не показывать конец области
+      },
+    })
     end,
+    desc = "Indentation guides",
   },
   {
     "nvim-surround",
     for_cat = 'general.always',
     event = "DeferredUIEnter",
-    -- keys = "",
     after = function(plugin)
       require('nvim-surround').setup()
     end,
@@ -132,7 +142,6 @@ require('lze').load {
     "fidget.nvim",
     for_cat = 'general.extra',
     event = "DeferredUIEnter",
-    -- keys = "",
     after = function(plugin)
       require('fidget').setup({})
     end,
@@ -163,10 +172,10 @@ require('lze').load {
 
       require('lualine').setup({
         options = {
-          icons_enabled = false,
+          icons_enabled = true,
           theme = colorschemeName,
-          component_separators = '|',
-          section_separators = '',
+          component_separators = { left = '', right = ''},
+          section_separators = { left = '', right = ''},
         },
         sections = {
           lualine_c = {
@@ -196,19 +205,16 @@ require('lze').load {
     "gitsigns.nvim",
     for_cat = 'general.always',
     event = "DeferredUIEnter",
-    -- cmd = { "" },
-    -- ft = "",
-    -- keys = "",
-    -- colorscheme = "",
     after = function (plugin)
       require('gitsigns').setup({
         -- See `:help gitsigns.txt`
         signs = {
-          add = { text = '+' },
-          change = { text = '~' },
-          delete = { text = '_' },
-          topdelete = { text = '‾' },
+          add          = { text = '┃' },
+          change       = { text = '┃' },
+          delete       = { text = '_' },
+          topdelete    = { text = '‾' },
           changedelete = { text = '~' },
+          untracked    = { text = '┆' },
         },
         on_attach = function(bufnr)
           local gs = package.loaded.gitsigns
@@ -279,11 +285,7 @@ require('lze').load {
   {
     "which-key.nvim",
     for_cat = 'general.extra',
-    -- cmd = { "" },
     event = "DeferredUIEnter",
-    -- ft = "",
-    -- keys = "",
-    -- colorscheme = "",
     after = function (plugin)
       require('which-key').setup({
       })
