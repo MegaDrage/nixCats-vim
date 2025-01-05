@@ -1,9 +1,3 @@
--- load the plugins via paq-nvim when not on nix
--- YOU are in charge of putting the plugin
--- urls and build steps in there, which will only be used when not on nix,
--- and you should keep any setup functions
--- OUT of that file, as they are ONLY loaded when this
--- configuration is NOT loaded via nix.
 require('nixCatsUtils.catPacker').setup({
 --[[ ------------------------------------------ ]]
 --[[ The way to think of this is, its very      ]]
@@ -92,4 +86,3 @@ require('nixCatsUtils.catPacker').setup({
   -- only stuff pertaining to downloading should be added to paq.
 
 })
--- OK, again, that isnt needed if you load this setup via nix, but it is an option.
