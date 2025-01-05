@@ -4,21 +4,18 @@ return {
   {
     "nvim-treesitter",
     for_cat = 'general.treesitter',
-    -- cmd = { "" },
     event = "DeferredUIEnter",
-    -- ft = "",
-    -- keys = "",
-    -- colorscheme = "",
     load = function (name)
         vim.cmd.packadd(name)
         vim.cmd.packadd("nvim-treesitter-textobjects")
+	vim.cmd.packadd("nvim-treesitter-context")
     end,
     after = function (plugin)
       -- [[ Configure Treesitter ]]
       -- See `:help nvim-treesitter`
       require('nvim-treesitter.configs').setup {
         highlight = { enable = true, },
-        indent = { enable = false, },
+        indent = { enable = true, },
         incremental_selection = {
           enable = true,
           keymaps = {
@@ -28,6 +25,9 @@ return {
             node_decremental = '<M-space>',
           },
         },
+	context = {
+	  enable = true;
+	},
         textobjects = {
           select = {
             enable = true,

@@ -22,6 +22,7 @@ require('nixCatsUtils.catPacker').setup({
   { 'tpope/vim-repeat', },
 
   { 'nvim-treesitter/nvim-treesitter-textobjects', opt = true, },
+  { 'nvim-treesitter/nvim-treesitter-context', opt = true, },
   { 'nvim-treesitter/nvim-treesitter', build = ':TSUpdate', opt = true, },
 
   { 'nvim-telescope/telescope-fzf-native.nvim', build = ':!which make && make', opt = true, },
