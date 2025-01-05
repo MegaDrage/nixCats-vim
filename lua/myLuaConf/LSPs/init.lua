@@ -61,38 +61,24 @@ if nixCats('neonixdev') then
 
 end
 
+if nixCats('cpp') then
+  servers.clangd = {
+    cmd = {
+      "clangd",
+      "--completion-style=detailed",
+      "--function-arg-placeholders",
+    },
+  }
+end
+
 if nixCats('go') then
   servers.gopls = {}
 end
 
--- This is this flake's version of what kickstarter has set up for mason handlers.
--- This is a convenience function that calls lspconfig on the lsps we downloaded via nix
--- This will not download your lsp. Nix does that.
-
---  Add any additional override configuration in the following tables. They will be passed to
---  the `settings` field of the server config. You must look up that documentation yourself.
---  All of them are listed in https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md
---
---  If you want to override the default filetypes that your language server will attach to you can
---  define the property 'filetypes' to the map in question.
---  You may do the same thing with cmd
-
--- servers.clangd = {},
--- servers.gopls = {},
--- servers.pyright = {},
--- servers.rust_analyzer = {},
--- servers.tsserver = {},
--- servers.html = { filetypes = { 'html', 'twig', 'hbs'} },
-
-
 if not require('nixCatsUtils').isNixCats and nixCats('lspDebugMode') then
   vim.lsp.set_log_level("debug")
 end
--- If you were to comment out this autocommand
--- and instead pass the on attach function directly to
--- nvim-lspconfig, it would do the same thing.
--- come to think of it, it might be better because then lspconfig doesnt have to be called before lsp attach?
--- but you would still end up triggering on a FileType event anyway, so, it makes little difference.
+
 vim.api.nvim_create_autocmd('LspAttach', {
   group = vim.api.nvim_create_augroup('nixCats-lsp-attach', { clear = true }),
   callback = function(event)

@@ -89,6 +89,11 @@
         debug = with pkgs; {
           go = [ delve ];
         };
+
+	cpp = with pkgs; [
+	  clang-tools
+	];
+
         go = with pkgs; [
           gopls
           gotools
