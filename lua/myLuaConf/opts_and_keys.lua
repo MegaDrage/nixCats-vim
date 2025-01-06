@@ -16,6 +16,7 @@ if os.getenv ('WAYLAND_DISPLAY') and vim.fn.exepath ('wl-copy') ~= '' then
     cache_enabled = 1,
   }
 end
+
 -- [[ Setting options ]]
 -- See `:help vim.o`
 -- NOTE: You can change these options as you wish!
@@ -45,12 +46,14 @@ vim.o.mouse = ('a')
 -- Indent
 vim.o.smarttab = true
 vim.opt.cpoptions:append ('I')
--- vim.o.expandtab = true
+vim.o.expandtab = true
 vim.o.smartindent = true
--- vim.o.autoindent = true
--- vim.o.tabstop = 4
--- vim.o.softtabstop = 4
--- vim.o.shiftwidth = 4
+vim.o.autoindent = true
+vim.o.tabstop = 4
+vim.o.softtabstop = 4
+vim.o.shiftwidth = 4
+
+vim.o.cursorline = true;
 
 -- stops line wrapping from being confusing
 vim.o.breakindent = true
