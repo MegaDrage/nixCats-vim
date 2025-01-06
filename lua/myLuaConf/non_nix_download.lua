@@ -27,7 +27,7 @@ require('nixCatsUtils.catPacker').setup({
 
   { 'nvim-telescope/telescope-fzf-native.nvim', build = ':!which make && make', opt = true, },
   { 'nvim-telescope/telescope-ui-select.nvim', opt = true, },
-  {'nvim-telescope/telescope.nvim', opt = true, },
+  { 'nvim-telescope/telescope.nvim', opt = true, },
 
   -- lsp
   { 'williamboman/mason.nvim', opt = true, },
@@ -66,6 +66,7 @@ require('nixCatsUtils.catPacker').setup({
   { 'mfussenegger/nvim-dap', opt = true, },
 
   -- { 'm-demare/hlargs.nvim', },
+  { 'folke/todo-comments.nvim', opt = true, },
   { 'mbbill/undotree', opt = true, },
   { 'tpope/vim-fugitive', opt = true, },
   { 'tpope/vim-rhubarb', opt = true, },

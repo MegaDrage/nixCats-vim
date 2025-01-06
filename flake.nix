@@ -219,6 +219,7 @@
           extra = with pkgs.vimPlugins; [
             fidget-nvim
             # lualine-lsp-progress
+	    todo-comments-nvim
             which-key-nvim
             comment-nvim
             undotree
