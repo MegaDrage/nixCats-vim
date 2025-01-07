@@ -14,6 +14,7 @@ require('lze').load {
 
       conform.setup({
         formatters_by_ft = {
+          neonixdev = { "nixfmt" },
           -- NOTE: download some formatters in lspsAndRuntimeDeps
           -- and configure them here
           -- lua = { "stylua" },
