@@ -7,8 +7,8 @@
     nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
     nixCats.url = "github:BirdeeHub/nixCats-nvim";
     "plugins-w3m-vim" = {
-        url = "github:yuratomo/w3m.vim";
-        flake = false;
+      url = "github:yuratomo/w3m.vim";
+      flake = false;
     };
     # "plugins-hlargs" = {
     #   url = "github:m-demare/hlargs.nvim";
@@ -90,7 +90,9 @@
             # per nvim package you export
             debug = with pkgs; { go = [ delve ]; };
 
-            cpp = with pkgs; [ clang-tools ];
+            cpp = with pkgs; [ llvmPackages_19.clang-tools ];
+
+            json = with pkgs; [ jq ];
 
             go = with pkgs; [ gopls gotools go-tools gccgo ];
             # and easily check if they are included in lua
@@ -109,7 +111,12 @@
               # you can make subcategories!!!
               # (always isnt a special name, just the one I chose for this subcategory)
               always = [ lze vim-repeat plenary-nvim ];
-              extra = [ oil-nvim nvim-web-devicons open-browser-vim pkgs.neovimPlugins.w3m-vim ];
+              extra = [
+                oil-nvim
+                nvim-web-devicons
+                open-browser-vim
+                pkgs.neovimPlugins.w3m-vim
+              ];
             };
             # You can retreive information from the
             # packageDefinitions of the package this was packaged with.
