@@ -180,6 +180,7 @@
                 nvim-surround
               ];
               extra = with pkgs.vimPlugins; [
+                lazygit-nvim
                 fidget-nvim
                 # lualine-lsp-progress
                 todo-comments-nvim
