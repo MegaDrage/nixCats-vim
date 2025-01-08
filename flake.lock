@@ -31,10 +31,27 @@
         "type": "github"
       }
     },
+    "plugins-w3m-vim": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1418302067,
+        "narHash": "sha256-zv5WdkS5PouGQbsklZev8X3oIg3EWUhb10GBqm/0BjA=",
+        "owner": "yuratomo",
+        "repo": "w3m.vim",
+        "rev": "228a852b188f1a62ecea55fa48b0ec892fa6bad7",
+        "type": "github"
+      },
+      "original": {
+        "owner": "yuratomo",
+        "repo": "w3m.vim",
+        "type": "github"
+      }
+    },
     "root": {
       "inputs": {
         "nixCats": "nixCats",
-        "nixpkgs": "nixpkgs"
+        "nixpkgs": "nixpkgs",
+        "plugins-w3m-vim": "plugins-w3m-vim"
       }
     }
   },
