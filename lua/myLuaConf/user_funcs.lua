@@ -9,13 +9,6 @@ vim.g.openbrowser_search_engines = vim.tbl_extend(
   }
 )
 
-vim.g.openbrowser_browser_commands = {
-  {
-    name = "w3m",
-    args = { "{browser}", "{uri}" }
-  }
-}
-
 local function search_with_engine(engine, query)
   query = query or vim.fn.expand("<cword>")
   local url = vim.g.openbrowser_search_engines[engine]
