@@ -58,7 +58,6 @@ if nixCats('neonixdev') then
     servers.rnix = {}
     servers.nil_ls = {}
   end
-
 end
 
 if nixCats('cpp') then
@@ -69,6 +68,22 @@ if nixCats('cpp') then
       "--function-arg-placeholders",
     },
   }
+
+  vim.api.nvim_create_autocmd('LspAttach', {
+    group = vim.api.nvim_create_augroup('nixCats-lsp-attach', { clear = true }),
+    callback = function(event)
+      local client = vim.lsp.get_client_by_id(event.data.client_id)
+      require('myLuaConf.LSPs.caps-on_attach').on_attach(client, event.buf)
+      if client ~= nil then
+          if client.name == "clangd" then
+            require("clangd_extensions.inlay_hints").setup_autocmd()
+            require("clangd_extensions.inlay_hints").set_inlay_hints()
+          end
+      end
+    end
+  })
+  vim.api.nvim_set_keymap('n', '<leader>csi', '<cmd>ClangdSymbolInfo<cr>', { noremap = true, silent = true, desc = '[C]langd [S]ymbol [I]nfo' })
+  vim.api.nvim_set_keymap('n', '<leader>cth', '<cmd>ClangdTypeHierarchy<cr>', { noremap = true, silent = true, desc = '[C]langd [T]ype [H]ierarchy' })
 end
 
 if nixCats('go') then
@@ -78,13 +93,6 @@ end
 if not require('nixCatsUtils').isNixCats and nixCats('lspDebugMode') then
   vim.lsp.set_log_level("debug")
 end
-
-vim.api.nvim_create_autocmd('LspAttach', {
-  group = vim.api.nvim_create_augroup('nixCats-lsp-attach', { clear = true }),
-  callback = function(event)
-    require('myLuaConf.LSPs.caps-on_attach').on_attach(vim.lsp.get_client_by_id(event.data.client_id), event.buf)
-  end
-})
 
 require('lze').load {
   {

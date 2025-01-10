@@ -10,6 +10,11 @@
       url = "github:yuratomo/w3m.vim";
       flake = false;
     };
+
+    "plugins-nvim-treesitter-cpp-tools" = {
+      url = "github:Badhi/nvim-treesitter-cpp-tools";
+      flake = false;
+    };
     # "plugins-hlargs" = {
     #   url = "github:m-demare/hlargs.nvim";
     #   flake = false;
@@ -107,6 +112,7 @@
           # This is for plugins that will load at startup without using packadd:
           startupPlugins = {
             debug = with pkgs.vimPlugins; [ nvim-nio ];
+            cpp = with pkgs.vimPlugins; [ clangd_extensions-nvim ];
             general = with pkgs.vimPlugins; {
               # you can make subcategories!!!
               # (always isnt a special name, just the one I chose for this subcategory)
@@ -147,6 +153,7 @@
               default = [ nvim-dap nvim-dap-ui nvim-dap-virtual-text ];
               go = [ nvim-dap-go ];
             };
+            # cpp = with pkgs.vimPlugins; [ clangd_extensions-nvim ];
             lint = with pkgs.vimPlugins; [ nvim-lint ];
             format = with pkgs.vimPlugins; [ conform-nvim ];
             markdown = with pkgs.vimPlugins; [ markdown-preview-nvim ];
@@ -189,6 +196,7 @@
               extra = with pkgs.vimPlugins; [
                 lazygit-nvim
                 fidget-nvim
+                pkgs.neovimPlugins.nvim-treesitter-cpp-tools
                 # lualine-lsp-progress
                 todo-comments-nvim
                 which-key-nvim

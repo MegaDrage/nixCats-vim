@@ -354,4 +354,30 @@ require('lze').load {
       end, {})
     end,
   },
+  {
+    "nvim-treesitter-cpp-tools",
+    for_cat = 'general.extra',
+    cmd = {
+        "TSCppDefineClassFunc",
+        "TSCppMakeConcreteClass",
+        "TSCppRuleOf3",
+        "TSCppRuleOf5",
+    },
+    -- dep_of = { "nvim-treesitter" },
+    after = function(plugin)
+      require 'nt-cpp-tools'.setup({
+          preview = {
+              quit = 'q', -- optional keymapping for quit preview
+              accept = '<tab>' -- optional keymapping for accept preview
+          },
+      })
+    end,
+  },
+  -- {
+  --   "clangd_extensions.nvim",
+  --   for_cat = 'cpp',
+  --   event = "DeferredUIEnter",
+  --   after = function(plugin)
+  --   end,
+  -- },
 }
