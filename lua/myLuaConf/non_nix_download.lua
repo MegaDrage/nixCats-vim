@@ -85,4 +85,6 @@ require('nixCatsUtils.catPacker').setup({
   { "kdheepak/lazygit.nvim", lazy = true, opt = true, },
   { "Badhi/nvim-treesitter-cpp-tools", config = true, },
   { "p00f/clangd_extensions.nvim", opt = true, },
+  -- JAVA
+  { "mfussenegger/nvim-jdtls", lazy = true, },
 })

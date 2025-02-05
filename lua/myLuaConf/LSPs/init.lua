@@ -86,6 +86,10 @@ if nixCats('cpp') then
   vim.api.nvim_set_keymap('n', '<leader>cth', '<cmd>ClangdTypeHierarchy<cr>', { noremap = true, silent = true, desc = '[C]langd [T]ype [H]ierarchy' })
 end
 
+if nixCats('java') then
+  servers.jdtls = {}
+end
+
 if nixCats('go') then
   servers.gopls = {}
 end

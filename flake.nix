@@ -99,9 +99,12 @@
 
             json = with pkgs; [ jq ];
 
+            java = with pkgs; [ jdt-language-server vimPlugins.nvim-jdtls ];
+
             go = with pkgs; [ gopls gotools go-tools gccgo ];
             # and easily check if they are included in lua
             format = with pkgs; [ ];
+
             neonixdev = {
               # also you can do this.
               inherit (pkgs) nix-doc lua-language-server nixd nixfmt-classic;
@@ -300,6 +303,7 @@
             lint = true;
             format = true;
             cpp = true;
+            java = true;
             neonixdev = true;
             test = { subtest1 = true; };
 
@@ -346,6 +350,7 @@
             markdown = true;
             general = true;
             neonixdev = true;
+            java = true;
             lint = true;
             format = true;
             test = true;
