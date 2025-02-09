@@ -16,6 +16,8 @@ require('nixCatsUtils.catPacker').setup({
 --[[ ------------------------------------------ ]]
   { "BirdeeHub/lze", },
   { "stevearc/oil.nvim", },
+  { "nvim-tree/nvim-tree.lua", version = "*", lazy = false, },
+
   { 'joshdick/onedark.vim', },
   { 'nvim-tree/nvim-web-devicons', },
   { 'nvim-lua/plenary.nvim', },

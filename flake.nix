@@ -121,6 +121,7 @@
               # (always isnt a special name, just the one I chose for this subcategory)
               always = [ lze vim-repeat plenary-nvim ];
               extra = [
+                nvim-tree-lua
                 oil-nvim
                 nvim-web-devicons
                 open-browser-vim

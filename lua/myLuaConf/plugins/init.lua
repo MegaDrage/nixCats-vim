@@ -373,11 +373,50 @@ require('lze').load {
       })
     end,
   },
-  -- {
-  --   "clangd_extensions.nvim",
-  --   for_cat = 'cpp',
-  --   event = "DeferredUIEnter",
-  --   after = function(plugin)
-  --   end,
-  -- },
+  {
+    "nvim-tree.lua",
+    for_cat = 'general.extra',
+    after = function(plugin)
+      require("nvim-tree").setup({
+          sort = {
+            sorter = "case_sensitive",
+          },
+          view = {
+            width = 30,
+            float = {
+              enable = true,
+              quit_on_focus_loss = true,
+              open_win_config = function()
+                local screen_w = vim.o.columns
+                local screen_h = vim.o.lines
+                local window_w = math.min(50, screen_w * 0.5)
+                local window_h = math.min(30, screen_h * 0.6)
+                local center_x = (screen_w - window_w) / 2
+                local center_y = (screen_h - window_h) / 2
+                return {
+                  border = "rounded",
+                  relative = "editor",
+                  row = center_y,
+                  col = center_x,
+                  width = window_w,
+                  height = window_h,
+                }
+              end,
+            },
+          },
+          renderer = {
+            group_empty = true,
+          },
+          filters = {
+            dotfiles = true,
+          },
+    })
+    vim.api.nvim_create_autocmd("FileType", {
+      pattern = "NvimTree",
+      callback = function()
+        vim.keymap.set("n", "<Esc>", ":NvimTreeClose<CR>", { buffer = true, noremap = true, silent = true })
+      end,
+    })
+    end,
+  },
 }
